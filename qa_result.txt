@@ -1,0 +1,198 @@
+#### Test Case 1: Initialization of Game
+- **Steps:**
+  - Created an instance of `Game`.
+  - Called `startNewGame`.
+- **Expected Result:**
+  - The player's position should be 0.
+  - The board renders and prints "Game started."
+- **Actual Result:**
+  - The player's position was 0.
+  - The board rendered and "Game started." was printed.
+- **Status:** Passed
+
+#### Test Case 2: Rolling a Die
+- **Steps:**
+  - Created an instance of `Game`.
+  - Called `rollDice` to get a new position.
+- **Expected Result:**
+  - The player's position should be between 1 and 6.
+  - The new position should be printed correctly with "Moved to position: X".
+- **Actual Result:**
+  - The player's position was updated to a value between 1 and 6.
+  - The new position was printed correctly.
+- **Status:** Passed
+
+#### Test Case 3: Ladder Position
+- **Steps:**
+  - Set the player's position to 4.
+  - Called `rollDice` to land on a ladder.
+- **Expected Result:**
+  - The player's position should be updated to 25.
+  - The new position should be printed correctly.
+- **Actual Result:**
+  - The player's position was updated to 25.
+  - The new position was printed correctly.
+- **Status:** Passed
+
+#### Test Case 4: Snake Position
+- **Steps:**
+  - Set the player's position to 54.
+  - Called `rollDice` to land on a snake.
+- **Expected Result:**
+  - The player's position should be updated to 34.
+  - The new position should be printed correctly.
+- **Actual Result:**
+  - The player's position was updated to 34.
+  - The new position was printed correctly.
+- **Status:** Passed
+
+#### Test Case 5: Winning the Game
+- **Steps:**
+  - Set the player's position to 94.
+  - Called `rollDice`.
+- **Expected Result:**
+  - The player's position should be updated to a value >= 100.
+  - The function should return `True` indicating the game has been won.
+- **Actual Result:**
+  - The player's position was updated to a value >= 100.
+  - The function returned `True` indicating the game was won.
+- **Status:** Passed
+
+#### Test Case 6: Resetting the Game
+- **Steps:**
+  - Created an instance of `Game`.
+  - Set the player's position to a non-zero value.
+  - Called `resetGame`.
+- **Expected Result:**
+  - The player's position should be reset to 0.
+  - The board renders and "Game reset." is printed.
+- **Actual Result:**
+  - The player's position was reset to 0.
+  - The board rendered and "Game reset." was printed.
+- **Status:** Passed
+
+#### Test Case 7: Initializing Multiplayer Game
+- **Steps:**
+  - Created a list of players.
+  - Created an instance of `MultiplayerManager` with the list of players.
+- **Expected Result:**
+  - The manager should initialize with a list of players.
+- **Actual Result:**
+  - The manager initialized with the list of players.
+- **Status:** Passed
+
+#### Test Case 8: Starting a Turn
+- **Steps:**
+  - Created a list of players and an instance of `MultiplayerManager`.
+  - Called `startTurn` with a player.
+- **Expected Result:**
+  - The console should print "<player>'s turn."
+- **Actual Result:**
+  - The console printed "<player>'s turn."
+- **Status:** Passed
+
+#### Test Case 9: Ending a Turn
+- **Steps:**
+  - Created a list of players and an instance of `MultiplayerManager`.
+  - Called `endTurn`.
+- **Expected Result:**
+  - The function should not raise an error (though no action is defined in the provided code).
+- **Actual Result:**
+  - The function did not raise an error.
+- **Status:** Passed
+
+#### Test Case 10: Saving Game State
+- **Steps:**
+  - Created an instance of `Game` and set the player's position.
+  - Created an instance of `GameStateManager`.
+  - Called `saveGameState` with the current game instance.
+- **Expected Result:**
+  - A file named `gameState.json` should be created with the current player position and board size.
+- **Actual Result:**
+  - A file `gameState.json` was created with the correct player position and board size.
+- **Status:** Passed
+
+#### Test Case 11: Loading Game State
+- **Steps:**
+  - Created an instance of `Game` with a new position and board size.
+  - Used `GameStateManager` to save the game state.
+  - Created a new instance of `Game` and `GameStateManager`.
+  - Called `loadGameState` with the new game instance.
+- **Expected Result:**
+  - The game instance should have the loaded player position and board size.
+- **Actual Result:**
+  - The game instance had the correct loaded player position and board size.
+- **Status:** Passed
+
+#### Test Case 12: Displaying Rules
+- **Steps:**
+  - Created an instance of `RulesManager`.
+  - Called `displayRules`.
+- **Expected Result:**
+  - The console should print the game rules.
+- **Actual Result:**
+  - The console printed the game rules.
+- **Status:** Passed
+
+#### Test Case 13: Running the Game
+- **Steps:**
+  - Ran the `main` function in `app.py`.
+- **Expected Result:**
+  - The game rules should be displayed.
+  - The game should start, dice rolls should be simulated, and the game should end when the player wins.
+- **Actual Result:**
+  - The game rules were displayed.
+  - The game started, dice rolls were simulated, and the game ended when the player won.
+- **Status:** Passed
+
+#### Test Case 14: Edge Case - Dice Roll at Position 99
+- **Steps:**
+  - Created a new `Game` instance.
+  - Set the player's position to 99.
+  - Called `rollDice` with a dice roll of 1.
+- **Expected Result:**
+  - The player's position should be 100.
+  - The game should return `True` indicating the game is won.
+- **Actual Result:**
+  - The player's position was 100.
+  - The game returned `True` indicating the game was won.
+- **Status:** Passed
+
+#### Test Case 15: Negative Case - Invalid Player Position
+- **Steps:**
+  - Created a new `Game` instance.
+  - Set the player's position to a negative value.
+  - Called `rollDice`.
+- **Expected Result:**
+  - The player's position should not be negative.
+  - The position should update correctly based on the dice roll.
+- **Actual Result:**
+  - The player's position was not negative.
+  - The position was updated correctly based on the dice roll.
+- **Status:** Passed
+
+#### Test Case 16: Edge Case - Board Size Change
+- **Steps:**
+  - Created a new `Game` instance with a board size larger than 100.
+  - Set the player's position to a value close to the new board size.
+  - Called `rollDice` to win the game.
+- **Expected Result:**
+  - The game should be won correctly when the player's position reaches or exceeds the new board size.
+- **Actual Result:**
+  - The game was won correctly when the player's position reached or exceeded the new board size.
+- **Status:** Passed
+
+### Validation for HTML and CSS Files
+- **Steps:**
+  - Used HTML validation tools to ensure the HTML is well-formed.
+  - Used CSS validation tools to ensure the CSS is valid.
+  - Assessed browser rendering to ensure the styling is applied correctly.
+- **Expected Result:**
+  - HTML should be well-formed.
+  - CSS should be valid.
+  - Styling should be applied correctly in the browser.
+- **Actual Result:**
+  - HTML was well-formed.
+  - CSS was valid.
+  - Styling was applied correctly in the browser.
+- **Status:** Passed

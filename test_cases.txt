@@ -1,0 +1,148 @@
+### Test Cases for `game.py`
+
+#### Test Case 1: Initialization of Game
+- **Steps:**
+  1. Create an instance of `Game`.
+  2. Initialize the game by calling `startNewGame`.
+- **Expected Result:**
+  - The player's position should be 0.
+  - The board renders and prints "Game started."
+
+#### Test Case 2: Rolling a Die
+- **Steps:**
+  1. Create an instance of `Game`.
+  2. Call `rollDice` to get a new position.
+- **Expected Result:**
+  - The player's position should be between 1 and 6.
+  - The new position is printed correctly with "Moved to position: X".
+
+#### Test Case 3: Ladder Position
+- **Steps:**
+  1. Create an instance of `Game`.
+  2. Set the player's position to a position before a ladder (e.g., 4).
+  3. Call `rollDice` to land on a ladder.
+- **Expected Result:**
+  - The player's position should be updated to the ladder destination (25).
+  - The new position is printed correctly.
+
+#### Test Case 4: Snake Position
+- **Steps:**
+  1. Create an instance of `Game`.
+  2. Set the player's position to a position before a snake (e.g., 54).
+  3. Call `rollDice` to land on a snake.
+- **Expected Result:**
+  - The player's position should be updated to the snake destination (34).
+  - The new position is printed correctly.
+
+#### Test Case 5: Winning the Game
+- **Steps:**
+  1. Create an instance of `Game`.
+  2. Set the player's position to a position that can win the game with a dice roll (e.g., 94).
+  3. Call `rollDice`.
+- **Expected Result:**
+  - The player's position should be updated to a value >= 100.
+  - The function should return `True` indicating the game has been won.
+
+#### Test Case 6: Resetting the Game
+- **Steps:**
+  1. Create an instance of `Game`.
+  2. Set the player's position to a non-zero value.
+  3. Call `resetGame`.
+- **Expected Result:**
+  - The player's position should be reset to 0.
+  - The board renders and prints "Game reset."
+
+### Test Cases for `multiplayer_manager.py`
+
+#### Test Case 7: Initializing Multiplayer Game
+- **Steps:**
+  1. Create a list of players.
+  2. Create an instance of `MultiplayerManager` with the list of players.
+- **Expected Result:**
+  - The manager should initialize with a list of players.
+
+#### Test Case 8: Starting a Turn
+- **Steps:**
+  1. Create a list of players and an instance of `MultiplayerManager`.
+  2. Call `startTurn` with a player.
+- **Expected Result:**
+  - The console should print "<player>'s turn."
+
+#### Test Case 9: Ending a Turn
+- **Steps:**
+  1. Create a list of players and an instance of `MultiplayerManager`.
+  2. Call `endTurn`.
+- **Expected Result:**
+  - The function should not raise an error (though no action is defined in the provided code).
+
+### Test Cases for `game_state_manager.py`
+
+#### Test Case 10: Saving Game State
+- **Steps:**
+  1. Create an instance of `Game` and set the player's position.
+  2. Create an instance of `GameStateManager`.
+  3. Call `saveGameState` with the current game instance.
+- **Expected Result:**
+  - A file named `gameState.json` should be created with the current player position and board size.
+
+#### Test Case 11: Loading Game State
+- **Steps:**
+  1. Create an instance of `Game` with a new position and board size.
+  2. Use `GameStateManager` to save the game state.
+  3. Create a new instance of `Game` and `GameStateManager`.
+  4. Call `loadGameState` with the new game instance.
+- **Expected Result:**
+  - The game instance should have the loaded player position and board size.
+
+### Test Cases for `rules_manager.py`
+
+#### Test Case 12: Displaying Rules
+- **Steps:**
+  1. Create an instance of `RulesManager`.
+  2. Call `displayRules`.
+- **Expected Result:**
+  - The console should print the game rules.
+
+### Test Cases for `app.py`
+
+#### Test Case 13: Running the Game
+- **Steps:**
+  1. Run the `main` function in `app.py`.
+- **Expected Result:**
+  - The game rules are displayed.
+  - The game starts, dice rolls are simulated, and the game ends when the player wins.
+
+### Test Cases for `templates/index.html` and `static/styles.css`
+
+These are HTML and CSS files, and they don't require traditional unit testing. Instead, you can validate these files using:
+- HTML validation tools to ensure the HTML is well-formed.
+- CSS validation tools to ensure the CSS is valid.
+- Browser rendering to ensure the styling is applied correctly.
+
+### Test Cases for Edge Cases
+
+#### Test Case 14: Edge Case - Dice Roll at Position 99
+- **Steps:**
+  1. Create a new `Game` instance.
+  2. Set the player's position to 99.
+  3. Call `rollDice` with a dice roll of 1.
+- **Expected Result:**
+  - The player's position should be 100.
+  - The game should return `True` indicating the game is won.
+
+#### Test Case 15: Negative Case - Invalid Player Position
+- **Steps:**
+  1. Create a new `Game` instance.
+  2. Set the player's position to a negative value.
+  3. Call `rollDice`.
+- **Expected Result:**
+  - The player's position should not be negative.
+  - The position should update correctly based on the dice roll.
+
+#### Test Case 16: Edge Case - Board Size Change
+- **Steps:**
+  1. Create a new `Game` instance with a board size larger than 100.
+  2. Set the player's position to a value close to the new board size.
+  3. Call `rollDice` to win the game.
+- **Expected Result:**
+  - The game should be won correctly when the player's position reaches or exceeds the new board size.
